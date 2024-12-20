@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="./styles/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <title>TS ToDo List</title>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1 id="app__title">ToDo List</h1>
+
+            <!-- user add tasks -->
+            <div id="app__task">
+                <input id="task-input" type="text" placeholder="Your task is waiting you...">
+                <button id="task-add-button" title="Add" >
+                    <i class="fa-solid fa-circle-plus fa-xl"></i>
+                </button>
+            </div>
+
+            <!-- all the tasks -->
+            <div id="app__list-tasks">
+                <div class="task">
+                    <button>
+                        <i class="fa-regular fa-circle-check"></i>
+                    </button>
+                    <p class="checked">Lorem ipsum.</p>
+                </div>
+                <div class="task">
+                    <button>
+                        <i class="fa-regular fa-circle"></i>
+                    </button>
+                    <p>Lorem ipsum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../dist/index.js" ></script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 * { margin:0; padding: 0;}
 
+/* loading font family */
 @font-face {
     font-family: 'Roboto';
     src: url('../fonts/Roboto-Regular.ttf');
@@ -10,12 +11,13 @@
     src: url('../fonts/Roboto-Bold.ttf');
 }
 
+/* main application settings */
 #app {
     min-width: 1200px;
     background-color: #333333;
 }
 
-.container {
+#container {
     width: 1200px;
     margin: 0 auto;
 }
@@ -27,14 +29,15 @@
     padding: 50px 0 25px 0;
 }
 
+/* create a new task object */
 #app__task {
-    width: 400px;
-    margin: 0 auto;
+    width: 500px;
+    margin: 0 auto 50px;
 }
 
 #task-input {
     height: 20px;
-    width: 310px;
+    width: 420px;
     margin: 0 10px 0 0;
     padding: 10px;
 }
@@ -46,11 +49,15 @@
     border: 0;
 }
 
-#task-add-button:hover i,.task button:hover i {
+/* button event */
+#task-add-button:hover, .task button:hover {
     cursor: pointer;
 }
 
+
+/* button icon event */
 #task-add-button:hover i, .task button:hover i {
+    cursor: pointer;
     color: #fff;
 }
 
@@ -58,18 +65,27 @@
     color: #65e674;
 }
 
+/* tags used by listed tasks */
 #app__list-tasks {
-    padding: 10px;
+    padding: 30px 20px;
     border: 1px solid #fff;
     width: 500px;
     margin: 10px auto 0;
     border-radius: 5px;
 }
 
+#app__list-tasks p {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
 .task {
     width: 400px;
     height: 40px;
-    margin: 0 auto;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .task button, .task p {
@@ -82,11 +98,21 @@
     border: 0;
 }
 
+.task button i {
+    font-size: 16px;
+}
+
 .checked {
     text-decoration: line-through;
 }
 
+.task__checkbox {
+    padding: 0 10px 0 0;
+}
 
+.task__delete {
+    padding: 0 0 0 10px;
+}
 
 
 

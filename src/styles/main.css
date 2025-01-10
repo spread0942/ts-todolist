@@ -29,10 +29,15 @@
     padding: 50px 0 25px 0;
 }
 
-/* create a new task object */
+/* create a new task object and log */
 #app__task {
     width: 500px;
-    margin: 0 auto 50px;
+    margin: 0 auto 20px;
+}
+
+#app__log {
+    width: 500px;
+    margin: 0 auto 20px;
 }
 
 #task-input {
@@ -40,6 +45,14 @@
     width: 420px;
     margin: 0 10px 0 0;
     padding: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#app__log--text {
+    height: 20px;
+    width: 420px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
 }
 
 #task-add-button {

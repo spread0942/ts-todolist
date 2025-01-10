@@ -1,5 +1,18 @@
 const addTaskButton = document.getElementById("task-add-button") as HTMLButtonElement;
 
+// load taskfrom the cache
+function loadTask() {
+    const tasksContainter = document.getElementById("app__list-tasks") as HTMLDivElement;
+    const tasks: string[] = JSON.parse(localStorage.getItem("tasks") || "[]");
+
+    tasksContainter.innerHTML = "";
+
+    tasks.forEach((task) => {
+        addNewTask(task);
+    });
+}
+
+
 /// an handler to create button with icon
 function createButton(buttonClass: string, iconListClass: string[]): HTMLElement {
     const button = document.createElement("button");
@@ -52,12 +65,23 @@ function addNewTask(taskText: string) {
     listTasks.append(taskDiv);
 }
 
+// add the new task in the cache
+function addTaskToCache(newTask: string) {
+    const tasks: string[] = JSON.parse(localStorage.getItem("tasks") || "[]");
+    tasks.push(newTask);
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+
+    loadTask()
+}
+
+// add new task event
 addTaskButton.addEventListener("click", () => {
     const newTaskInput = document.getElementById("task-input") as HTMLInputElement;
     const content = newTaskInput.value;
     
     if (content != "") {
-        addNewTask(newTaskInput.value);
-
+        addTaskToCache(newTaskInput.value);
     }
 });
+
+window.onload = loadTask;

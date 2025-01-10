@@ -72,6 +72,7 @@
     width: 500px;
     margin: 10px auto 0;
     border-radius: 5px;
+    overflow-y: auto;
 }
 
 #app__list-tasks p {

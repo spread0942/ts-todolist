@@ -1,3 +1,5 @@
+import { DeleteTask } from "./DeleteTask";
+
 export class AddTask {
     // load taskfrom the cache
     static loadTask() {
@@ -59,6 +61,8 @@ export class AddTask {
         const editButton = AddTask.createButton("task__edit", ["fa-solid", "fa-pen-to-square"]);
         const deleteButton = AddTask.createButton("task__delete", ["fa-solid", "fa-trash"]);
         
+        deleteButton.addEventListener('click', DeleteTask.deleteTask);
+
         secondDiv.append(editButton);
         secondDiv.append(deleteButton);
 

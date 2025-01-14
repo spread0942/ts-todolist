@@ -13,11 +13,13 @@ addTaskButton.addEventListener("click", () => {
     
     if (content != "") {
         AddTask.addTaskToCache(newTaskInput.value);
-        Logger.success("Added a new task! 😁")
+        Logger.success(`Added the new task: ${content}! 😁`);
     }
     else {
         Logger.error("Task can't be empty. 😑");
     }
+
+    newTaskInput.value = "";
 });
 
 // this function set the application size

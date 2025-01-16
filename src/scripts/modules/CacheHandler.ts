@@ -91,4 +91,17 @@ export class CacheHandler {
 
         localStorage.setItem("tasks", this.getCacheItem(tasks));
     }
+
+    static updateTaskTextCache(taskID: number, newTaskText: string): void {
+        const tasks: Task[] = this.getCache();
+
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].id === taskID) {
+                tasks[i].text = newTaskText;
+                break;
+            }
+        }
+
+        localStorage.setItem("tasks", this.getCacheItem(tasks));
+    }
 }

@@ -2,6 +2,7 @@ import { DeleteTask } from "./DeleteTask";
 import { ToggleCheckBox } from "./CheckUncheckTask";
 import { Task } from "./Task";
 import { CacheHandler } from "./CacheHandler";
+import { EditTask } from "../EditTask";
 
 export class AddTask {
     /**
@@ -80,8 +81,13 @@ export class AddTask {
 
         taskParagraph.textContent = task.text;
 
+        const taskInput = document.createElement("input");
+        taskInput.classList.add("task__text--input");
+        taskInput.style.display = "none";
+
         firstDiv.appendChild(checkboxButton);
         firstDiv.appendChild(taskParagraph);
+        firstDiv.appendChild(taskInput);
 
         taskDiv.append(firstDiv);
 
@@ -91,6 +97,7 @@ export class AddTask {
         const editButton = this.createButton("task__edit", ["fa-solid", "fa-pen-to-square"]);
         const deleteButton = this.createButton("task__delete", ["fa-solid", "fa-trash"]);
         
+        editButton.addEventListener('click', EditTask.editTask);
         deleteButton.addEventListener('click', DeleteTask.deleteTask);
 
         secondDiv.append(editButton);

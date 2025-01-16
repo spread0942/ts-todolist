@@ -38,6 +38,11 @@ module.exports = {
         ],
         include: path.resolve(__dirname, 'src'),  // Apply to CSS files in the src folder
       },
+      // loading fonts
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [
@@ -53,6 +58,10 @@ module.exports = {
         {
           from: 'src/styles',  // Copy all files from 'src/assets' directory
           to: 'styles',        // to the 'assets' directory in the dist folder
+        },
+        {
+          from: "src/fonts",
+          to: "fonts"
         }
       ],
     }),

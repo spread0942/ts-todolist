@@ -1,6 +1,12 @@
 import { CacheHandler } from "./CacheHandler";
 
 export class ToggleCheckBox {
+    /**
+     * Set or remove the checked class, it also manage the checked icon.
+     * Store the new value in the cache
+     * 
+     * @param event 
+     */
     static checkUncheck(event: MouseEvent) {
         const target = event.target as HTMLElement;
         const taskElement = target.closest('.task') as HTMLDivElement;

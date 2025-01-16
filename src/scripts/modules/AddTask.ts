@@ -4,7 +4,9 @@ import { Task } from "./Task";
 import { CacheHandler } from "./CacheHandler";
 
 export class AddTask {
-    // load taskfrom the cache
+    /**
+     * Load taskfrom the cache
+     */
     static loadTask() {
         const tasksContainter = document.getElementById("app__list-tasks") as HTMLDivElement;
         // load the tasks cache
@@ -18,7 +20,13 @@ export class AddTask {
         });
     }
 
-    /// an handler to create button with icon
+    /**
+     * An handler to create button with icon
+     * 
+     * @param buttonClass 
+     * @param iconListClass 
+     * @returns 
+     */
     static createButton(buttonClass: string, iconListClass: string[]): HTMLElement {
         // create the button
         const button = document.createElement("button");
@@ -35,7 +43,11 @@ export class AddTask {
         return button;
     }
 
-    /// add new task to the tasks list
+    /**
+     * Add new task to the tasks list
+     * 
+     * @param task 
+     */
     static addTask(task: Task) {
         const listTasks = document.getElementById("app__list-tasks") as HTMLDivElement;
 
@@ -89,7 +101,11 @@ export class AddTask {
         listTasks.append(taskDiv);
     }
 
-    // add the new task in the cache
+    /**
+     * Add the new task in the cache
+     * 
+     * @param newTextTask 
+     */
     static addNewTaskToCache(newTextTask: string) {
         // load the tasks cache and add the new one
         CacheHandler.addTaskToCache(newTextTask);

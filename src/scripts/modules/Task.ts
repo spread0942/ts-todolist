@@ -12,6 +12,11 @@ export class Task {
         this.checked = checked;
     }
 
+    /**
+     * Convert the Task entity in string
+     * 
+     * @returns 
+     */
     toString(): string {
         return JSON.stringify({
             id: this.id,
@@ -20,7 +25,11 @@ export class Task {
         })
     }
 
-    // convert a string in JSON format to Task entity
+    /**
+     * Convert a string in JSON format to a Task entity
+     * @param taskString 
+     * @returns 
+     */
     static fromStringToTask(taskString: string) : Task {
         const taskJson: Record<string, any> = JSON.parse(taskString);
 

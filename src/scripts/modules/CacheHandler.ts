@@ -1,19 +1,32 @@
 import { Task } from "./Task";
 
 export class CacheHandler {
-    // return the tasks in array forat
+    /**
+     * Return the tasks in array format
+     * 
+     * @returns 
+     */
     static getCache(): Task[] {
         const tasksString = localStorage.getItem("tasks");
         return tasksString ? JSON.parse(tasksString).map((taskString: string) => Task.fromStringToTask(taskString)) : [];
 
     }
 
-    // convert a task array in string
+    /**
+     * Convert a task array in string
+     * 
+     * @param tasks 
+     * @returns 
+     */
     static getCacheItem(tasks: Task[]): string {
         return JSON.stringify(tasks.map(task => task.toString()))
     }
 
-    // get the last id stored from the cache
+    /**
+     * Get the last id stored from the cache
+     * 
+     * @returns 
+     */
     static getLastId(): number {
         const tasks: Task[] = this.getCache();
         let newID: number = 0;
@@ -25,7 +38,11 @@ export class CacheHandler {
         return newID + 1;
     }
 
-    // add the task in the cache
+    /**
+     * Add the task in the cache
+     * 
+     * @param taskText 
+     */
     static addTaskToCache(taskText: string): void {
         const tasks: Task[] = this.getCache();
         const id: number = this.getLastId();
@@ -35,7 +52,11 @@ export class CacheHandler {
         localStorage.setItem('tasks', this.getCacheItem(tasks));
     }
 
-    // remove the task from the cache
+    /**
+     * Remove the task from the cache
+     * 
+     * @param taskID 
+     */
     static removeFromCache(taskID: number): void {
         const tasks: Task[] = this.getCache();
         let i = -1;
@@ -53,7 +74,11 @@ export class CacheHandler {
         }
     }
 
-    // remove the task from the cache
+    /**
+     * Remove the task from the cache
+     * 
+     * @param taskID 
+     */
     static setCheckOrUncheckToCache(taskID: number): void {
         const tasks: Task[] = this.getCache();
 

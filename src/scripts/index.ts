@@ -12,7 +12,7 @@ addTaskButton.addEventListener("click", () => {
     const content = newTaskInput.value;
     
     if (content != "") {
-        AddTask.addTaskToCache(newTaskInput.value);
+        AddTask.addNewTaskToCache(newTaskInput.value);
         Logger.success(`Added the new task: ${content}! 😁`);
     }
     else {

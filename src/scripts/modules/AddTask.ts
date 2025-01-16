@@ -1,17 +1,20 @@
 import { DeleteTask } from "./DeleteTask";
+import { ToggleCheckBox } from "./CheckUncheckTask";
+import { Task } from "./Task";
+import { CacheHandler } from "./CacheHandler";
 
 export class AddTask {
     // load taskfrom the cache
     static loadTask() {
         const tasksContainter = document.getElementById("app__list-tasks") as HTMLDivElement;
         // load the tasks cache
-        const tasks: string[] = JSON.parse(localStorage.getItem("tasks") || "[]");
+        const tasks: Task[] = CacheHandler.getCache();
 
         tasksContainter.innerHTML = "";
 
         // add the tasks into the container
         tasks.forEach((task) => {
-            AddTask.addNewTask(task);
+            AddTask.addTask(task);
         });
     }
 
@@ -33,22 +36,37 @@ export class AddTask {
     }
 
     /// add new task to the tasks list
-    static addNewTask(taskText: string) {
+    static addTask(task: Task) {
         const listTasks = document.getElementById("app__list-tasks") as HTMLDivElement;
 
         const taskDiv = document.createElement("div");
+
         taskDiv.classList.add("task");
+        taskDiv.setAttribute('data-id', String(task.id));
 
         // create div element that will contain the button and the task text
         const firstDiv = document.createElement("div");
 
         // create checkbox button
-        const checkboxButton = AddTask.createButton("task__checkbox", ["fa-regular", "fa-circle"]);
+        let checkboxButton;
+
+        if (task.checked) {
+            checkboxButton = this.createButton("task__checkbox", ["fa-regular", "fa-circle-check"]);
+        } else {
+            checkboxButton = this.createButton("task__checkbox", ["fa-regular", "fa-circle"]);
+        }
+
+        checkboxButton.addEventListener('click', ToggleCheckBox.checkUncheck);
 
         // create paragraph text
         const taskParagraph = document.createElement("p");
         taskParagraph.classList.add("task__text");
-        taskParagraph.textContent = taskText;
+
+        if (task.checked) {
+            taskParagraph.classList.add("checked");
+        }
+
+        taskParagraph.textContent = task.text;
 
         firstDiv.appendChild(checkboxButton);
         firstDiv.appendChild(taskParagraph);
@@ -58,8 +76,8 @@ export class AddTask {
         // create div element that will contain the edit and delete buttons
         const secondDiv = document.createElement("div");
         
-        const editButton = AddTask.createButton("task__edit", ["fa-solid", "fa-pen-to-square"]);
-        const deleteButton = AddTask.createButton("task__delete", ["fa-solid", "fa-trash"]);
+        const editButton = this.createButton("task__edit", ["fa-solid", "fa-pen-to-square"]);
+        const deleteButton = this.createButton("task__delete", ["fa-solid", "fa-trash"]);
         
         deleteButton.addEventListener('click', DeleteTask.deleteTask);
 
@@ -72,14 +90,10 @@ export class AddTask {
     }
 
     // add the new task in the cache
-    static addTaskToCache(newTask: string) {
+    static addNewTaskToCache(newTextTask: string) {
         // load the tasks cache and add the new one
-        const tasks: string[] = JSON.parse(localStorage.getItem("tasks") || "[]");
-        tasks.push(newTask);
-        // create the tasks cache
-        localStorage.setItem("tasks", JSON.stringify(tasks))
-
-        AddTask.loadTask()
+        CacheHandler.addTaskToCache(newTextTask);
+        this.loadTask();
     }
 
 }

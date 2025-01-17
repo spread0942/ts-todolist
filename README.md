@@ -22,6 +22,24 @@ To run this project locally, you need to have the following installed:
 - [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/)
 
+## Docker
+
+Build the Dockerfile:
+
+```bash
+docker build -t ts-todolist .
+```
+
+Run the application:
+
+```bash
+docker run -p 8080:80 ts-todolist
+```
+
+Then you can open it on your web browser:
+
+![image](https://github.com/user-attachments/assets/6783ea69-9b9b-4477-8039-e088bb28d270)
+
 ## Installation
 
 1. Clone the repository to your local machine:
